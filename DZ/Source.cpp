@@ -1,25 +1,43 @@
 #include <iostream>
 #include <fstream>
-#include "Graf.h"
 #include <string>
 using namespace std;
 
+class Graf
+{
+private:
 
+	int *nodes;
+	int num_vershin;
+	int num_rebro;
+	struct uzel
+	{
+		int v1;
+		int v2;
+		int wes;
+	} *uzels;
+	void InitGraf(int** cost);
+	uzel* OutTree(int** cost);
+	void QuickSort(uzel *uzels, int left, int right);
+	void unitenodes(int n1, int n2);
+public:
+	int** input_dz(char* nfaila1);
+	void output_dz(int** cost, char *nfaila);
+};
 int** Graf::input_dz(char* nfaila1)
 {
-	setlocale(LC_ALL, "Russian");
 	int n=0;
 	int **cost=0;
 	ifstream in(nfaila1);
 
 	if (!in.is_open())
 	{
-		cout << "Файл не найден"<<endl;
+		cout << "Can't find file"<<endl;
 		return 0;
 	}
 	if ((n = in.get()) == EOF) 
 	{
-		cout << "Файл пуст"<<endl;
+		cout << "File empty"<<endl;
 	    return 0;
 	}
 	in.seekg(0, ios::beg);
@@ -31,12 +49,12 @@ int** Graf::input_dz(char* nfaila1)
 	in.clear();
 	if (n == 1)
 	{
-		cout << "На местности только один объект"<<endl;
+		cout << "Only one object"<<endl;
 		return 0;
 	}
 	if (n<0)
 	{
-		cout << "Количество объектов не может быть отрицательным"<<endl;
+		cout << "Number of objects can't be <0"<<endl;
 		return 0;
 	}
 	string stroka;
@@ -50,7 +68,7 @@ int** Graf::input_dz(char* nfaila1)
 	in.clear();
 	if (k != n)
 	{
-		cout << "Ошибка при вводе входных данных"<<endl;
+		cout << "Error"<<endl;
 		return 0;
 	}
 	k = 0;
@@ -64,7 +82,7 @@ int** Graf::input_dz(char* nfaila1)
 	in.clear();
 	if (k != n*n)
 	{
-		cout << "Не все расстояния заданы"<<endl;
+		cout << "not all distances"<<endl;
 		return 0;
 	}
 	cost = new int*[n];
@@ -82,12 +100,12 @@ int** Graf::input_dz(char* nfaila1)
 		{
 			if (cost[i][j] != cost[j][i])
 			{
-				cout << "Ошибка при вводе входных данных"<<endl;
+				cout << "Error"<<endl;
 				return 0;
 			}
-			if (cost[i][j] == 0)
+			if (cost[i][j] <= 0)
 			{
-				cout << "Расстояние не может быть равно 0" << endl;
+				cout << "Distance can't be <=0" << endl;
 				return 0;
 			}
 		}

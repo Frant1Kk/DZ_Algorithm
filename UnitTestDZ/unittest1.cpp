@@ -2,7 +2,6 @@
 #include "CppUnitTest.h"
 #define private public
 #include "Source.cpp"
-#include "Graf.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
