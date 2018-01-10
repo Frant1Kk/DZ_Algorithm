@@ -144,12 +144,18 @@ namespace UnitTestDZ
 			graf1.InitGraf(graf1.input_dz(test1));
 			int num_vershin1 = 4;
 			int num_rebro1 = 6;
-			int *nodes1;
-			nodes1 = new int[4];
-			nodes1[0] = 0;
-			nodes1[1] = 1;
-			nodes1[2] = 2;
-			nodes1[3] = 3;
+			int *parent1;
+			parent1 = new int[4];
+			parent1[0] = 0;
+			parent1[1] = 1;
+			parent1[2] = 2;
+			parent1[3] = 3;
+			int *size1;
+			size1 = new int[4];
+			size1[0] = 1;
+			size1[1] = 1;
+			size1[2] = 1;
+			size1[3] = 1;
 			Graf::uzel *uzels1;
 			uzels1 = new Graf::uzel[6];
 			uzels1[0].v1 = 0;
@@ -173,7 +179,10 @@ namespace UnitTestDZ
 			Assert::AreEqual(num_vershin1, graf1.num_vershin);
 			Assert::AreEqual(num_rebro1, graf1.num_rebro);
 			for (int k = 0;k < 4;k++)
-				Assert::AreEqual(nodes1[k], graf1.nodes[k]);
+			{
+				Assert::AreEqual(size1[k], graf1.size[k]);
+				Assert::AreEqual(parent1[k], graf1.parent[k]);
+			}
 			for (int k = 0;k < 6;k++)
 			{
 				Assert::AreEqual(uzels1[k].v1, graf1.uzels[k].v1);
@@ -185,12 +194,18 @@ namespace UnitTestDZ
 			graf2.InitGraf(graf2.input_dz(test2));
 			int num_vershin2 = 4;
 			int num_rebro2 = 6;
-			int *nodes2;
-			nodes2 = new int[4];
-			nodes2[0] = 0;
-			nodes2[1] = 1;
-			nodes2[2] = 2;
-			nodes2[3] = 3;
+			int *parent2;
+			parent2 = new int[4];
+			parent2[0] = 0;
+			parent2[1] = 1;
+			parent2[2] = 2;
+			parent2[3] = 3;
+			int *size2;
+			size2 = new int[4];
+			size2[0] = 1;
+			size2[1] = 1;
+			size2[2] = 1;
+			size2[3] = 1;
 			Graf::uzel *uzels2;
 			uzels2 = new Graf::uzel[6];
 			uzels2[0].v1 = 0;
@@ -214,7 +229,10 @@ namespace UnitTestDZ
 			Assert::AreEqual(num_vershin2, graf2.num_vershin);
 			Assert::AreEqual(num_rebro2, graf2.num_rebro);
 			for (int k = 0;k < 4;k++)
-				Assert::AreEqual(nodes2[k], graf2.nodes[k]);
+			{
+				Assert::AreEqual(size2[k], graf2.size[k]);
+				Assert::AreEqual(parent2[k], graf2.parent[k]);
+			}
 			for (int k = 0;k < 6;k++)
 			{
 				Assert::AreEqual(uzels2[k].v1, graf2.uzels[k].v1);
@@ -226,12 +244,18 @@ namespace UnitTestDZ
 			graf3.InitGraf(graf3.input_dz(test3));
 			int num_vershin3 = 4;
 			int num_rebro3 = 6;
-			int *nodes3;
-			nodes3 = new int[4];
-			nodes3[0] = 0;
-			nodes3[1] = 1;
-			nodes3[2] = 2;
-			nodes3[3] = 3;
+			int *parent3;
+			parent3 = new int[4];
+			parent3[0] = 0;
+			parent3[1] = 1;
+			parent3[2] = 2;
+			parent3[3] = 3;
+			int *size3;
+			size3 = new int[4];
+			size3[0] = 1;
+			size3[1] = 1;
+			size3[2] = 1;
+			size3[3] = 1;
 			Graf::uzel *uzels3;
 			uzels3 = new Graf::uzel[6];
 			uzels3[0].v1 = 0;
@@ -255,7 +279,10 @@ namespace UnitTestDZ
 			Assert::AreEqual(num_vershin3, graf3.num_vershin);
 			Assert::AreEqual(num_rebro3, graf3.num_rebro);
 			for (int k = 0;k < 4;k++)
-				Assert::AreEqual(nodes3[k], graf3.nodes[k]);
+			{
+				Assert::AreEqual(size3[k], graf3.size[k]);
+				Assert::AreEqual(parent3[k], graf3.parent[k]);
+			}
 			for (int k = 0;k < 6;k++)
 			{
 				Assert::AreEqual(uzels3[k].v1, graf3.uzels[k].v1);
@@ -267,12 +294,18 @@ namespace UnitTestDZ
 			graf4.InitGraf(graf4.input_dz(test4));
 			int num_vershin4 = 4;
 			int num_rebro4 = 6;
-			int *nodes4;
-			nodes4 = new int[4];
-			nodes4[0] = 0;
-			nodes4[1] = 1;
-			nodes4[2] = 2;
-			nodes4[3] = 3;
+			int *parent4;
+			parent4 = new int[4];
+			parent4[0] = 0;
+			parent4[1] = 1;
+			parent4[2] = 2;
+			parent4[3] = 3;
+			int *size4;
+			size4 = new int[4];
+			size4[0] = 1;
+			size4[1] = 1;
+			size4[2] = 1;
+			size4[3] = 1;
 			Graf::uzel *uzels4;
 			uzels4 = new Graf::uzel[6];
 			uzels4[0].v1 = 0;
@@ -296,7 +329,10 @@ namespace UnitTestDZ
 			Assert::AreEqual(num_vershin4, graf4.num_vershin);
 			Assert::AreEqual(num_rebro4, graf4.num_rebro);
 			for (int k = 0;k < 4;k++)
-				Assert::AreEqual(nodes4[k], graf4.nodes[k]);
+			{
+				Assert::AreEqual(size4[k], graf4.size[k]);
+				Assert::AreEqual(parent4[k], graf4.parent[k]);
+			}
 			for (int k = 0;k < 6;k++)
 			{
 				Assert::AreEqual(uzels4[k].v1, graf4.uzels[k].v1);
@@ -508,7 +544,7 @@ namespace UnitTestDZ
 				Assert::AreEqual(expected4[k].wes, actual4[k].wes);
 			}
 		}
-		TEST_METHOD(TEST_unitenodes)
+		/*TEST_METHOD(TEST_unitenodes)
 		{
 			Graf graf1;
 			graf1.OutTree(graf1.input_dz(test1));
@@ -553,6 +589,88 @@ namespace UnitTestDZ
 			nodes4[3] = 0;
 			for (int k = 0;k < 3;k++)
 				Assert::AreEqual(nodes4[k], graf4.nodes[k]);
+		}*/
+		TEST_METHOD(TEST_unite)
+		{
+			Graf graf1;
+			graf1.OutTree(graf1.input_dz(test1));
+			int *parent1;
+			parent1 = new int[4];
+			parent1[0] = 0;
+			parent1[1] = 0;
+			parent1[2] = 0;
+			parent1[3] = 0;
+			int *size1;
+			size1 = new int[4];
+			size1[0] = 4;
+			size1[1] = 1;
+			size1[2] = 1;
+			size1[3] = 1;
+			for (int k = 0;k < 3;k++)
+			{
+				Assert::AreEqual(size1[k], graf1.size[k]);
+				Assert::AreEqual(parent1[k], graf1.parent[k]);
+			}
+			/////////////////////////////////////////////////////////////////////////////////
+			Graf graf2;
+			graf2.OutTree(graf2.input_dz(test2));
+			int *parent2;
+			parent2 = new int[4];
+			parent2[0] = 0;
+			parent2[1] = 0;
+			parent2[2] = 0;
+			parent2[3] = 0;
+			int *size2;
+			size2 = new int[4];
+			size2[0] = 4;
+			size2[1] = 1;
+			size2[2] = 1;
+			size2[3] = 1;
+			for (int k = 0;k < 3;k++)
+			{
+				Assert::AreEqual(size2[k], graf2.size[k]);
+				Assert::AreEqual(parent2[k], graf2.parent[k]);
+			}
+			/////////////////////////////////////////////////////////////////////////////////
+			Graf graf3;
+			graf3.OutTree(graf3.input_dz(test3));
+			int *parent3;
+			parent3 = new int[4];
+			parent3[0] = 2;
+			parent3[1] = 2;
+			parent3[2] = 2;
+			parent3[3] = 2;
+			int *size3;
+			size3 = new int[4];
+			size3[0] = 1;
+			size3[1] = 1;
+			size3[2] = 4;
+			size3[3] = 1;
+			for (int k = 0;k < 3;k++)
+			{
+				Assert::AreEqual(size3[k], graf3.size[k]);
+				Assert::AreEqual(parent3[k], graf3.parent[k]);
+			}
+			/////////////////////////////////////////////////////////////////////////////////
+			Graf graf4;
+			graf4.OutTree(graf4.input_dz(test4));
+			int *parent4;
+			parent4 = new int[4];
+			parent4[0] = 1;
+			parent4[1] = 1;
+			parent4[2] = 1;
+			parent4[3] = 1;
+			int *size4;
+			size4 = new int[4];
+			size4[0] = 1;
+			size4[1] = 4;
+			size4[2] = 1;
+			size4[3] = 1;
+			for (int k = 0;k < 3;k++)
+			{
+				Assert::AreEqual(size4[k], graf4.size[k]);
+				Assert::AreEqual(parent4[k], graf4.parent[k]);
+			}
 		}
 		TEST_METHOD(TEST_output_dz)
 		{

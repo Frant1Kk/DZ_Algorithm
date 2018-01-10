@@ -7,7 +7,8 @@ class Graf
 {
 private:
 
-	int *nodes;
+	int *parent;
+	int *size;
 	int num_vershin;
 	int num_rebro;
 	struct uzel
@@ -16,10 +17,12 @@ private:
 		int v2;
 		int wes;
 	} *uzels;
+	void make_set(int v);
+	int find_set(int v);
+	void unite(int a, int b);
 	void InitGraf(int** cost);
 	uzel* OutTree(int** cost);
 	void QuickSort(uzel *uzels, int left, int right);
-	void unitenodes(int n1, int n2);
 public:
 	int** input_dz(char* nfaila1);
 	void output_dz(int** cost, char *nfaila);
@@ -112,14 +115,26 @@ int** Graf::input_dz(char* nfaila1)
 	}
 	return (cost);
 }
+void Graf::make_set(int v) 
+{
+	parent[v] = v;
+	size[v] = 1;
+}
+int Graf::find_set(int v) 
+{
+	if (v == parent[v])
+		return v;
+	return parent[v] = find_set(parent[v]);
+}
 void Graf::InitGraf(int** cost)
 {
 	num_vershin = cost[0][0];
 	num_rebro = (num_vershin*(num_vershin - 1)) / 2;
-	nodes = new int[num_vershin];
 	uzels = new uzel[num_rebro];
+	parent = new int[num_vershin];
+	size = new int[num_vershin];
 	for (int i = 0;i < num_vershin;i++)
-		nodes[i] = i;
+		make_set(i);
 	int k = 0;
 	for (int i = 0;i < num_vershin;i++)
 	{
@@ -131,7 +146,6 @@ void Graf::InitGraf(int** cost)
 			k++;
 		}
 	}
-	
 }
 void Graf::QuickSort(uzel *uzels, int left, int right)
 {
@@ -166,16 +180,18 @@ void Graf::QuickSort(uzel *uzels, int left, int right)
 		QuickSort(uzels, q + 1, right);
 }
 
-void Graf::unitenodes(int n1, int n2)
+void Graf::unite(int a, int b) 
 {
-	int t = nodes[n2];
-	for (int i = 0;i < num_vershin;i++)
-	{
-		if (nodes[i] == t)
-			nodes[i] = nodes[n1];
+	a = find_set(a);
+	b = find_set(b);
+	if (a != b) {
+		if (size[a] < size[b])
+			swap(a, b);
+		parent[b] = a;
+		size[a]+=size[b];
 	}
 }
-	
+
 Graf::uzel* Graf::OutTree(int** cost)
 {
 	InitGraf(cost);
@@ -184,15 +200,14 @@ Graf::uzel* Graf::OutTree(int** cost)
 	int k = 0;
 	for (int i = 0;i < num_rebro;i++)
 	{
-		if (nodes[uzels[i].v1] != nodes[uzels[i].v2])
+		if (find_set(uzels[i].v1) != find_set(uzels[i].v2))
 		{
-			unitenodes(uzels[i].v1, uzels[i].v2);
+			unite(uzels[i].v1, uzels[i].v2);
 			vivod[k] = uzels[i];
 			k++;
 		}
 	}
 	return (vivod);
-
 }
 
 void Graf::output_dz(int** cost,char *nfaila)
